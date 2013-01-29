@@ -58,7 +58,7 @@ class Strava(object):
 
     def login(self):
         """
-        Login
+        Login service
         """
 
         https_top_url = re.compile('^http').sub('https', self.TOP_URL)
@@ -160,7 +160,7 @@ class Strava(object):
 
     def init_log(self, level):
         """
-        ログの設定
+        Logging setting
         """
 
         try:
@@ -173,7 +173,7 @@ class Strava(object):
 
 def get_opt():
     """
-    Parse command line option
+    Command line option
     """
     parser = optparse.OptionParser()
 
@@ -210,10 +210,10 @@ if __name__ == '__main__':
 
     # add
     activity_type = 'Run'
-    activity_name = 'bbb'
     activity_country = 'Japan'
     activity_location = 'Yokohama'
     activity_start_date = '01/26/2013'
+    activity_name = '%s %s' % (activity_type, activity_start_date)
     activity_start_time_of_day = '00:00:00'
     activity_elapsed_time = '01:00:00'
     activity_distance = '10'

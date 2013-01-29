@@ -69,7 +69,7 @@ def get_opt():
 
 def init_log(level = logging.INFO):
     """
-    Initialize log level
+    Logging setting
     """
 
     try:
