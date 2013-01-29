@@ -110,7 +110,16 @@ class Strava(object):
         body = self.browser.response().read()
         soup = BeautifulSoup(body)
         alink_list = soup.findAll('a', href=re.compile(r'^/activities/\d+?$'))
+
+        if len(alink_list) == 0:
+            # deleted all activities
+            return
+
         for alink in alink_list:
+
+            if alink['class'][0] == 'activity-map':
+                continue
+
             uri = alink['href']
             logging.debug('Delete %s', uri)
             self.browser.open('%s%s' % (self.TOP_APP_URL, uri), delete_param)
@@ -120,6 +129,9 @@ class Strava(object):
 
             # sleeping...
             time.sleep(self.__SLEEP_TIME)
+
+        # recursive while activities link
+        return self.delete_activities()
 
     def add_activity(self, activity_type, activity_name, 
                      activity_country, activity_location,
