@@ -136,11 +136,17 @@ class Strava(object):
     def add_activity(self, activity_type, activity_name, 
                      activity_country, activity_location,
                      activity_start_date, activity_start_time_of_day,
-                     activity_elapsed_time, activity_distance,
-                     force = True):
+                     activity_elapsed_time, activity_distance):
         """
         Add an activity manually
         """
+
+        if not all((activity_type and activity_name and activity_country
+            and activity_location and activity_start_date 
+            and activity_start_time_of_day, activity_elapsed_time
+            and activity_distance)):
+            logging.error('Failed to add activity. Check data.')
+            return
 
         self.browser.open('%s/activities/new' % self.TOP_URL)
         self.browser.select_form(nr=0)
