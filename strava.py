@@ -208,7 +208,7 @@ def get_opt():
     # log level 
     parser.add_option ('-l', '--loglevel',
                        dest = 'log_level',
-                       default = 'WARNING',
+                       default = 'INFO',
                        help = 'Log level'
                        )
     options, remainder = parser.parse_args()
@@ -224,18 +224,18 @@ if __name__ == '__main__':
     strava = Strava(email, password, logging.DEBUG)
 
     # delete
-    #strava.delete_activities()
+    strava.delete_activities()
 
-    # add
-    activity_type = 'Run'
-    activity_country = 'Japan'
-    activity_location = 'Yokohama'
-    activity_start_date = '01/26/2013'
-    activity_name = '%s %s' % (activity_type, activity_start_date)
-    activity_start_time_of_day = '00:00:00'
-    activity_elapsed_time = '01:00:00'
-    activity_distance = '10'
-    strava.add_activity(activity_type, activity_name, activity_country,
-                        activity_location, activity_start_date,
-                        activity_start_time_of_day, activity_elapsed_time,
-                        activity_distance)
+    ## add
+    #activity_type = 'Run'
+    #activity_country = 'Japan'
+    #activity_location = 'Yokohama'
+    #activity_start_date = '01/26/2013'
+    #activity_name = '%s %s' % (activity_type, activity_start_date)
+    #activity_start_time_of_day = '00:00:00'
+    #activity_elapsed_time = '01:00:00'
+    #activity_distance = '10'
+    #strava.add_activity(activity_type, activity_name, activity_country,
+    #                    activity_location, activity_start_date,
+    #                    activity_start_time_of_day, activity_elapsed_time,
+    #                    activity_distance)
